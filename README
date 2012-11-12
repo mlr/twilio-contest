@@ -1,0 +1,3 @@
+A Sinatra based application that interfaces with Twilio for conducting an automated phone based contest.
+
+This was originally created for Fight For Life 2012. http://fightforlifeevent.org/

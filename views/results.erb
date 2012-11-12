@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Fight for Life Contest Results</title>
+  <style type="text/css">
+  body {
+    padding-left: 10px;
+  }
+
+  table {
+    border: 1px solid #000;
+    border-bottom: none;
+    border-right: none;
+  }
+
+  th, td {
+    border-bottom: 1px solid #000;
+    border-right: 1px solid #000;
+    text-align: right;
+    padding: 5px;
+  }
+
+  th {
+    background: #CCC;
+  }
+
+  h1, h2 {
+    font-family: "Helvetica Light", Helvetica, Verdana;
+    font-size: 24px;
+    color: #333;
+  }
+
+  h2 {
+    margin: 20px 0px 10px;
+    font-size: 16px;
+  }
+  </style>
+</head>
+
+<body>
+<h1>Fight for Life contest results</h1>
+<% x = 0; y = 0; question = 1 %>
+<% @calls.each_with_index do |call,index| %>
+  <% if question != call.question || x == 0 %>
+    <% x = x+1; y = 0; question = call.question %>
+  </tr>
+</table>
+
+<h2><%= call.question %>) <%= Trivia::Question(call.question.to_i-1)[:question] %></h2>
+<table border="0" cellspacing="0" cellpadding="0" width="60%">
+  <tr>
+    <th width="15%">Caller #</th>
+    <th>Phone #</th>
+    <th>Contact #</th>
+    <th width="35%">Date</th>
+  </tr>
+  <% end %>
+  <tr>
+    <td width="10%"><%= y = y+1; y %></td>
+    <td><%= call.phone_number %></td>
+    <td><%= call.contact_number %></td>
+    <td><%= call.created_at.strftime("%m/%d/%Y at %I:%M%P") %></td>
+  </tr>
+<% end %>
+</table>
+</body>
+</html>
